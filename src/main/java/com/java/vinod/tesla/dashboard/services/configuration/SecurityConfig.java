@@ -29,6 +29,7 @@ public class SecurityConfig {
                         .authenticationEntryPoint(authenticationEntryPoint)
                         .accessDeniedHandler(accessDeniedHandler))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/actuator/health").permitAll()
                         .requestMatchers(
                                 "/",
                                 "/index.html",

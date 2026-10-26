@@ -1,2 +1,55 @@
 target/**
 .idea
+
+# Build output
+target/
+*.class
+
+# Maven wrapper/runtime noise
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.classpath
+.project
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+application-*.local.yml
+application-*.local.properties
+
+# JWT keys and certificates
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+certs/
+keys/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test/runtime temp files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Component-local generated artifacts
+outputs/
+__pycache__/
+*.pyc

@@ -18,7 +18,7 @@ public class CustomExceptionHandler
     public final ResponseEntity<Object> handleHeaderException(Exception ex, WebRequest request)
     {
         List<String> details = new ArrayList<>();
-        details.add(ex.getLocalizedMessage());
+        details.add("A required request header is missing or invalid.");
         ErrorResponse error = new ErrorResponse("Bad Request", details);
         return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
     }
@@ -27,7 +27,8 @@ public class CustomExceptionHandler
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) 
     {
         List<String> details = new ArrayList<>();
-        details.add(ex.getLocalizedMessage());
+        details.add("This service is temporarily unavailable. Please try again shortly.");
+        org.slf4j.LoggerFactory.getLogger(CustomExceptionHandler.class).warn("application_error correlationId={} exceptionType={}", org.slf4j.MDC.get("correlationId"), ex.getClass().getSimpleName());
         ErrorResponse error = new ErrorResponse("Server Error", details);
         return new ResponseEntity(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
